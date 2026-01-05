@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form Validation</title>
+</head>
+
+<body>
+
+  <form id="myForm">
+    <input type="text" id="name">
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="error"></p>
+
+  <script>
+    var form = document.getElementById("myForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var name = document.getElementById("name").value;
+
+      if (name == "") {
+        document.getElementById("error").innerText = "Please enter name";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

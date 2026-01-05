@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Callback Queue</title>
+</head>
+
+<body>
+
+  <h1>Main Page Content</h1>
+  <p>This content loads first.</p>
+
+  <div id="ad" style="margin-top:20px; font-weight:bold;">
+    Loading Ad...
+  </div>
+
+  <script>
+    console.log("Main content loaded");
+
+    setTimeout(function () {
+      document.getElementById("ad").innerHTML = "Ad Loaded After Page Content";
+      console.log("Ad loaded");
+    }, 0);
+
+    console.log("Page rendering completed");
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JSON Stringify</title>
+</head>
+
+<body>
+
+  <p id="data"></p>
+
+  <script>
+    var user = {
+      username: "admin",
+      role: "manager"
+    };
+
+    var jsonData = JSON.stringify(user);
+
+    localStorage.setItem("user", jsonData);
+
+    document.getElementById("data").innerHTML = jsonData;
+  </script>
+
+</body>
+
+</html>

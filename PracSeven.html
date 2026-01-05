@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Filter Example</title>
+</head>
+
+<body>
+
+  <script>
+    var products = [
+      { name: "Laptop", inStock: true },
+      { name: "Mobile", inStock: false },
+      { name: "Headphone", inStock: true }
+    ];
+
+    var availableProducts = products.filter(function (p) {
+      return p.inStock === true;
+    });
+
+    console.log(availableProducts);
+  </script>
+
+</body>
+
+</html>

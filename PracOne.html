@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Call Stack & Event Loop Example</title>
+</head>
+
+<body>
+
+  <h2>Call Stack & Event Loop Demo</h2>
+  <button onclick="callExample()">Click Me</button>
+
+  <script>
+    function callExample() {
+      console.log("Start");
+
+      setTimeout(function () {
+        console.log("Async Task");
+      }, 0);
+
+      console.log("End");
+    }
+  </script>
+
+</body>
+
+</html>

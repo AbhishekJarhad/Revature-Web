@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Callback Hell Example</title>
+</head>
+
+<body>
+
+  <script>
+    function validateUser(callback) {
+      setTimeout(function () {
+        console.log("User validated");
+        callback();
+      }, 1000);
+    }
+
+    function processPayment(callback) {
+      setTimeout(function () {
+        console.log("Payment processed");
+        callback();
+      }, 1000);
+    }
+
+    function generateInvoice() {
+      setTimeout(function () {
+        console.log("Invoice generated");
+      }, 1000);
+    }
+
+    validateUser(function () {
+      processPayment(function () {
+        generateInvoice();
+      });
+    });
+  </script>
+
+</body>
+
+</html>

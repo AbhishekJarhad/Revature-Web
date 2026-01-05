@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Async Await</title>
+</head>
+
+<body>
+
+  <script>
+    async function fetchData() {
+      var res = await fetch(url);
+      var data = await res.json();
+      console.log(data);
+    }
+
+    fetchData();
+  </script>
+
+</body>
+
+</html>
