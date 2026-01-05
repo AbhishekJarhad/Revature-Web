@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mini Quiz</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+
+    .box {
+      width: 420px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    label:hover {
+      background-color: #f0f0f0;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #msg {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h3>Mini Quiz</h3>
+
+    <div class="info">
+      <div>Time: <span id="time">60</span>s</div>
+      <div>Score: <span id="score">0</span></div>
+    </div>
+
+    <div class="question" id="q"></div>
+    <div id="opt"></div>
+
+    <button id="next">Next</button>
+
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    var questions = [
+      {
+        q: "HTML stands for?",
+        o: ["Hyper Text Markup Language", "High Text Machine Language", "Hyper Tool Markup Language"],
+        a: 0
+      },
+      {
+        q: "CSS is used for?",
+        o: ["Structure", "Styling", "Logic"],
+        a: 1
+      },
+      {
+        q: "Which is JavaScript?",
+        o: ["Programming language", "Database", "Browser"],
+        a: 0
+      },
+      {
+        q: "Which tag is for link?",
+        o: ["<a>", "<p>", "<div>"],
+        a: 0
+      },
+      {
+        q: "Which is not a framework?",
+        o: ["React", "Angular", "HTML"],
+        a: 2
+      }
+    ];
+
+    var i = 0;
+    var score = 0;
+    var time = 60;
+
+    function show() {
+      $("#q").text((i + 1) + ". " + questions[i].q);
+      $("#opt").html("");
+
+      for (var j = 0; j < questions[i].o.length; j++) {
+        $("#opt").append(
+          '<label><input type="radio" name="op" value="' + j + '"> ' +
+          questions[i].o[j] +
+          '</label>'
+        );
+      }
+    }
+
+    show();
+
+    $("#next").click(function () {
+      var ans = $("input[name='op']:checked").val();
+
+      if (ans == questions[i].a) {
+        score++;
+        $("#score").text(score);
+      }
+
+      i++;
+
+      if (i < questions.length) {
+        show();
+      } else {
+        $("#msg").text("Quiz Finished! Your score is " + score);
+        $("#next").hide();
+        $("#q").hide();
+        $("#opt").hide();
+      }
+    });
+
+    setInterval(function () {
+      time--;
+      $("#time").text(time);
+
+      if (time == 0) {
+        $("#msg").text("Time Over! Your score is " + score);
+        $("#next").hide();
+        $("#q").hide();
+        $("#opt").hide();
+      }
+    }, 1000);
+  </script>
+
+</body>
+
+</html>
